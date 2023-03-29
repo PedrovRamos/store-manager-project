@@ -1,5 +1,4 @@
 const { expect } = require('chai');
-
 const { findAlls, findByIds } = require('../../../src/models/products.model');
 
 describe('Testa se o model da minha aplicação', () => {
