@@ -10,7 +10,7 @@ describe('Testa se o controller da minha aplicação', () => {
     const response = await chai
       .request(app)
       .get('/products/999');
-    expect(response.status).to.be.equal(404);
+    chai.expect(response.status).to.be.equal(404);
   })
 
   it('')
