@@ -12,9 +12,6 @@ describe('Testa se o controller da minha aplicação', () => {
       .get('/products/999');
     chai.expect(response.status).to.be.equal(404);
   })
-
-  it('')
-
   // it('tem acesso a todos produtos', async () => {
   //   const { message, type } = await findAll()
 
