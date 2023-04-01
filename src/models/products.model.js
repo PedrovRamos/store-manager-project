@@ -17,7 +17,24 @@ const findByIds = async (productId) => {
   return product;
 };
 
+const inserts = async (product) => {
+  const columns = Object.keys(product)
+    .join(', ');
+  
+  const placeholders = Object.keys(product)
+    .map((_key) => ('?'))
+    .join(', ');
+
+  const [{ insertId }] = await connect.execute(
+    `INSERT INTO products (${columns}) VALUES (${placeholders})`,
+    [...Object.values(product)],
+  );
+
+  return insertId;
+};
+
 module.exports = {
   findAlls,
   findByIds,
+  inserts,
 };
