@@ -48,7 +48,7 @@ describe('Testa se o service da minha aplicação', () => {
       .request(app)
       .get('/products')
     chai.expect(response.status).to.be.equal(200);
-    chai.expect(response.body.message).to.be.instanceOf(Object)
+    chai.expect(response.body).to.be.instanceOf(Array)
   })
 
 });
