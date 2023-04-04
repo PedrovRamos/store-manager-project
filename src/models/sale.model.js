@@ -1,3 +1,4 @@
+const camelize = require('camelize');
 const connect = require('./connect');
 
 const insertSale = async () => {
@@ -15,32 +16,34 @@ const insertSaleProduct = async (saleId, productId, quantity) => {
   );
 };
 
-// const findAll = async () => {
-//   const [sales] = await connection.execute(
-//     `SELECT sp.sale_id, s.date, sp.product_id, sp.quantity
-//     FROM StoreManager.sales_products AS sp
-//     INNER JOIN StoreManager.sales AS s
-//     ON sale_id = id
-//     ORDER BY sp.sale_id, sp.product_id`,
-//   );
+const findAll = async () => {
+  const [sales] = await connect.execute(
+    `SELECT sp.sale_id, s.date, sp.product_id, sp.quantity
+    FROM StoreManager.sales_products AS sp
+    INNER JOIN StoreManager.sales AS s
+    ON sale_id = id
+    ORDER BY sp.sale_id, sp.product_id`,
+  );
 
-//   sales;
-// };
+  return camelize(sales);
+};
 
-// const findById = async (saleId) => {
-//   const [sale] = await connection.execute(
-//     `SELECT s.date, sp.product_id, sp.quantity
-//     FROM StoreManager.sales_products AS sp
-//     INNER JOIN StoreManager.sales AS s
-//     ON sale_id = id
-//     WHERE sp.sale_id = ?
-//     ORDER BY sp.product_id`, [saleId],
-//   );
+const findSaleById = async (saleId) => {
+  const [sale] = await connect.execute(
+    `SELECT s.date, sp.product_id, sp.quantity
+    FROM StoreManager.sales_products AS sp
+    INNER JOIN StoreManager.sales AS s
+    ON sale_id = id
+    WHERE sp.sale_id = ?
+    ORDER BY sp.product_id`, [saleId],
+  );
 
-//   sale;
-// };
+  return camelize(sale);
+};
 
 module.exports = {
   insertSale,
   insertSaleProduct,
+  findAll,
+  findSaleById,
 };

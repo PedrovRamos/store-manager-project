@@ -4,13 +4,18 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3001/products",
-    "url": "http://localhost:3001/sales",
-    "method": "POST",
+    "url": "http://localhost:3001/products/999",
+    "method": "GET",
     "sortNum": 0,
     "created": "2023-03-28T02:21:33.705Z",
-    "modified": "2023-04-04T04:29:36.137Z",
+    "modified": "2023-04-04T05:35:08.941Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 1\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 5\n  }\n]",
+      "form": []
+    },
     "tests": []
   }
 ]

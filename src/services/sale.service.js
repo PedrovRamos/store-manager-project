@@ -1,5 +1,5 @@
 const { validateQuantity } = require('./validations/validationsInputValues');
-const { insertSale, insertSaleProduct } = require('../models/sale.model');
+const { insertSale, insertSaleProduct, findAll, findSaleById } = require('../models/sale.model');
 const { findById } = require('./product.service');
 
 const createSale = async (sales) => {
@@ -23,6 +23,24 @@ const createSale = async (sales) => {
   return { message: { id, itemsSold: sales } };
 };
 
+const listSales = async () => {
+  const allSales = await findAll();
+
+  return { type: null, message: allSales };
+};
+
+const listSaleById = async (saleId) => {
+  const sale = await findSaleById(saleId);
+
+  console.log(sale);
+
+  if (sale.length === 0) return { type: 'PRODUCT_NOT_FOUND', message: 'Sale not found' };
+
+  return { type: null, message: sale };
+};
+
 module.exports = {
   createSale,
+  listSales,
+  listSaleById,
 };

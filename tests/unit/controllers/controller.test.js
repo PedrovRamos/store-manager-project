@@ -26,15 +26,25 @@ describe('Testa se o controller da minha aplicação', () => {
       .send(
          [
             {
-              "productId": 1,
               "quantity": 1
-            },
-            {
-              "productId": 2,
-              "quantity": 5
             }
         ]
       )
-    chai.expect(response.status).to.be.equal(201);
+    chai.expect(response.status).to.be.equal(400);
+  })
+
+  it('Busca uma venda pelo id', async () => {
+    const response = await chai
+      .request(app)
+      .get('/sales/1')
+    chai.expect(response.status).to.be.equal(200);
+  })
+
+  it('Retorna um erro caso o id passado não exista', async () => {
+    const response = await chai
+      .request(app)
+      .get('/sales/999')
+    chai.expect(response.status).to.be.equal(404);
+    chai.expect(response.body.message).to.be.equal("Sale not found")
   })
 });
