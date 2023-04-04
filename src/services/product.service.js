@@ -11,8 +11,8 @@ const findById = async (productId) => {
   if (error.type) return error;
 
   const product = await findByIds(productId);
-  if (product) return { type: null, message: product };
-  return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+  if (!product) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+  return { type: null, message: product };
 };
 
 const insert = async (name) => {

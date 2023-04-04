@@ -13,7 +13,18 @@ const validateNewProduct = (name) => {
   return { type: null, message: '' };
 };
 
+const validateQuantity = (quantity) => {
+  const checkQuantity = quantity.every((elem) => elem.quantity > 0);
+
+  if (!checkQuantity) {
+    return { type: 'INVALID_VALUE', message: '"quantity" must be greater than or equal to 1' };
+  }
+
+  return { type: null, message: '' };
+};
+
 module.exports = {
   validateId,
   validateNewProduct,
+  validateQuantity,
 };
