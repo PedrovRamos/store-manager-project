@@ -11,5 +11,6 @@ Para realizar esse projeto, utilizei as tecnologias:
 <ul>
   <li>Node.Js</li>
   <li>JavaScript</li>
-  <li>express</li>
+  <li>Express</li>
+  <li>Chai</li>
 </ul>
